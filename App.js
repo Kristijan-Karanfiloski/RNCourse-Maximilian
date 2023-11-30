@@ -4,7 +4,6 @@ import {
   View,
   TextInput,
   Button,
-  ScrollView,
   FlatList,
 } from "react-native";
 import { useState } from "react";
@@ -17,7 +16,7 @@ export default function App() {
     // console.log("ENTERED TEXT", enteredText);
   };
   const addGoalHandler = () => {
-    //not the bese way to update state if the prevuious state depends on the current state
+    //not the bese way to update state if the previous state depends on the current state
     // setCourseGoals([...courseGoals, enteredGoalText]);
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
@@ -25,6 +24,8 @@ export default function App() {
     ]);
     console.log(enteredGoalText);
   };
+
+  console.log("Hello world");
 
   return (
     <View style={styles.appContainer}>
