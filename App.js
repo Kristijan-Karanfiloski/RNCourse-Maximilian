@@ -28,22 +28,26 @@ export default function App() {
   };
 
   const deleteGoalHandler = (id) => {
-    Alert.alert("Alert Title", "My Alert Msg", [
-      {
-        text: "Cancel",
-        onPress: () => console.log("Cancel Pressed"),
-        style: "cancel",
-      },
-      {
-        text: "Yes",
-        onPress: () => {
-          setCourseGoals((currentCourseGoals) =>
-            currentCourseGoals.filter((goal) => goal.id !== id),
-          );
-          console.log("OK Pressed");
+    Alert.alert(
+      "Delete Item?",
+      "Are you sure you want to delete this item? This action cannot be undone.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
         },
-      },
-    ]);
+        {
+          text: "Yes",
+          onPress: () => {
+            setCourseGoals((currentCourseGoals) =>
+              currentCourseGoals.filter((goal) => goal.id !== id),
+            );
+            console.log("OK Pressed");
+          },
+        },
+      ],
+    );
   };
   // setCourseGoals((currentCourseGoals) =>
   //     currentCourseGoals.filter((goal) => goal.id !== id)
