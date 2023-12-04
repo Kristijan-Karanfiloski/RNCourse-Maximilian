@@ -26,7 +26,7 @@ const GoalInput = ({ addGoalHandlerParentFn, visble, onCancel }) => {
   };
 
   return (
-    <Modal visible={visble} animationType="slide">
+    <Modal testID="test-modal" visible={visble} animationType="slide">
       <View style={styles.inputContainer}>
         <Image
           source={require("../assets/images/goal.png")}

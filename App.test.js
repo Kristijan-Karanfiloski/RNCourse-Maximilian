@@ -1,19 +1,27 @@
-import { render, screen } from "@testing-library/react-native";
+import { fireEvent, render, screen } from "@testing-library/react-native";
 
 import App from "./App";
 
-test("should render a view with input and button", () => {
-  // Arrange
-  const { getByPlaceholderText, getByText } = render(<App />);
+describe("Render App.js", () => {
+  it("should render a button", () => {
+    // Arrange
+    render(<App />);
+    // Act
+    const button = screen.getByText(/add new goal/i);
+    // Assert
+    expect(button).toBeVisible();
+  });
+  it("should open a modal when pressing the add new goal btn", async () => {
+    // Arrange
+    render(<App />);
+    // Act
+    const button = screen.getByText(/add new goal/i);
 
-  // Act
-  const inputElement = getByPlaceholderText("Your course goal!");
-  const buttonElement = getByText("Add Goal");
+    fireEvent.press(button);
 
-  const button = screen.getByText(/add goal/i);
+    const modal = await screen.queryByTestId(/test-modal/i);
 
-  // Assert
-  expect(inputElement).toBeTruthy();
-  expect(buttonElement).toBeVisible();
-  expect(button).toBeVisible();
+    // Assert
+    expect(modal).toBeVisible();
+  });
 });
